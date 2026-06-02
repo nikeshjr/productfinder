@@ -1,0 +1,6 @@
+{
+  "name": "Barcode Product Finder",
+  "description": "Scan or enter barcodes to instantly look up product names, front images, and ingredient descriptions via the Open Food Facts API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
