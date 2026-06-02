@@ -49,13 +49,18 @@ export default function App() {
       if (json && json.status === 1 && json.product) {
         const item = json.product;
 
-        // Exact source fallback mapping logic as mandated in spec
-        const mappedDescription = item.generic_name?.trim()
-          ? item.generic_name
-          : item.categories;
+        // Map product name: check product_name_en first, fallback to product_name
+        const mappedName = item.product_name_en?.trim()
+          ? item.product_name_en
+          : item.product_name;
+
+        // Map description: check generic_name_en first, fallback to generic_name, then to categories
+        const mappedDescription = item.generic_name_en?.trim()
+          ? item.generic_name_en
+          : (item.generic_name?.trim() ? item.generic_name : item.categories);
 
         setProductData({
-          item_name: item.product_name || '',
+          item_name: mappedName || '',
           description: mappedDescription || '',
           image: item.image_front_url || '',
         });
